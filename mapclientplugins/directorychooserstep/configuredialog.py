@@ -93,7 +93,7 @@ class ConfigureDialog(QtWidgets.QDialog):
         if self._workflow_location:
             dir_path = os.path.join(self._workflow_location, dir_path)
 
-        directory_valid = os.path.isdir(dir_path) and len(dir_path) > 0
+        directory_valid = os.path.isdir(dir_path) and len(self._ui.lineEditDirectoryLocation.text())
         self._ui.lineEditDirectoryLocation.setStyleSheet(DEFAULT_STYLE_SHEET if directory_valid else INVALID_STYLE_SHEET)
 
         return valid and directory_valid
