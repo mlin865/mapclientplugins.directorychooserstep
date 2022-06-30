@@ -73,7 +73,7 @@ class Ui_ConfigureDialog(object):
     # setupUi
 
     def retranslateUi(self, ConfigureDialog):
-        ConfigureDialog.setWindowTitle(QCoreApplication.translate("ConfigureDialog", u"ConfigureDialog", None))
+        ConfigureDialog.setWindowTitle(QCoreApplication.translate("ConfigureDialog", u"Configure Directory Chooser", None))
         self.configGroupBox.setTitle("")
         self.label0.setText(QCoreApplication.translate("ConfigureDialog", u"identifier:  ", None))
         self.label1.setText(QCoreApplication.translate("ConfigureDialog", u"Directory:  ", None))
