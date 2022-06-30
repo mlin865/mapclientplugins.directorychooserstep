@@ -76,7 +76,7 @@ class Ui_ConfigureDialog(object):
         ConfigureDialog.setWindowTitle(QCoreApplication.translate("ConfigureDialog", u"Configure Directory Chooser", None))
         self.configGroupBox.setTitle("")
         self.label0.setText(QCoreApplication.translate("ConfigureDialog", u"identifier:  ", None))
-        self.label1.setText(QCoreApplication.translate("ConfigureDialog", u"Directory:  ", None))
+        self.label1.setText(QCoreApplication.translate("ConfigureDialog", u"Input directory:  ", None))
         self.pushButtonDirectoryChooser.setText(QCoreApplication.translate("ConfigureDialog", u"...", None))
     # retranslateUi
 
