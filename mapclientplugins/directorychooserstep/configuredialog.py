@@ -32,6 +32,8 @@ class ConfigureDialog(QtWidgets.QDialog):
         self.identifierOccursCount = None
         self._previousLocation = ''
 
+        self.setWhatsThis("Please read documentation: \nhttps://abi-mapping-tools.readthedocs.io/en/latest/mapclientplugins.directorychooserstep/docs/index.html")
+
         self._make_connections()
 
     def _make_connections(self):
