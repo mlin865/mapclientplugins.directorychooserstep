@@ -1,6 +1,6 @@
+import webbrowser
 
-
-from PySide2 import QtWidgets
+from PySide2 import QtCore, QtWidgets
 from mapclientplugins.directorychooserstep.ui_configuredialog import Ui_ConfigureDialog
 import os.path
 
@@ -32,9 +32,14 @@ class ConfigureDialog(QtWidgets.QDialog):
         self.identifierOccursCount = None
         self._previousLocation = ''
 
-        self.setWhatsThis("Please read documentation: \nhttps://abi-mapping-tools.readthedocs.io/en/latest/mapclientplugins.directorychooserstep/docs/index.html")
+        self.setWhatsThis('<html>Please read the documentation available \n<a href="https://abi-mapping-tools.readthedocs.io/en/latest/mapclientplugins.directorychooserstep/docs/index.html">here</a> for further details.</html>')
 
         self._make_connections()
+
+    def event(self, e):
+        if e.type() == QtCore.QEvent.Type.WhatsThisClicked:
+            webbrowser.open(e.href())
+        return super().event(e)
 
     def _make_connections(self):
         self._ui.lineEdit0.textChanged.connect(self.validate)
