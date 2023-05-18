@@ -25,17 +25,17 @@ It produces 1 output which may be piped to other workflow steps:
    **Directory Chooser** workflow connections.
 
 
-Configure
----------
+Information on this plugins' specification is available :ref:`here <mcp-directory-chooser-specification>`.
 
-This step is used for choosing a directory on the local disk from outside the workflow directory.
-This step provides a *http://physiomeproject.org/workflow/1.0/rdf-schema#directory_location* to define the location where the directory is on the local disk.
-To choose the directory use the *...* button to open a directory chooser dialog.
-The *Directory* input is used to hold the relative path from the workflow to the input directory location.
 
-.. _fig-mcp-directory-chooser-configure-dialog:
+Configuration
+-------------
 
-.. figure:: _images/step-configuration-dialog.png
-   :alt: Step configure dialog
+Information on this plugins' configuration is available :ref:`here <mcp-directory-chooser-configuration>`.
 
-   *Directory Chooser* step configuration dialog.
+
+Instructions
+------------
+
+This is a non-interactive step.
+See `Configuration`_.
