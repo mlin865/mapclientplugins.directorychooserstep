@@ -1,35 +1,41 @@
-MAP Client Plugin - Directory Chooser
-=====================================
+Directory Chooser
+=================
 
+Overview
+--------
 The **Directory Chooser** is MAP Client plugin for choosing a directory from a location outside the workflow.
 
-.. _fig-mcp-directory-chooser-un-configured-step:
 
-.. figure:: _images/un-configured-step.png
-   :alt: Un-configured step icon
+Workflow Connections
+--------------------
 
-   An un-configured *Directory Chooser* step icon.
+As shown in :numref:`fig-mcp-directory-chooser-workflow-connections`, the **Directory Chooser** does not need any input.
 
-Configure
----------
+It produces 1 output which may be piped to other workflow steps:
 
-This step is used for choosing a directory on the local disk from outside the workflow directory.
-This step provides a *http://physiomeproject.org/workflow/1.0/rdf-schema#directory_location* to define the location where the directory is on the local disk.
-To choose the directory use the *...* button to open a directory chooser dialog.
-The *Directory* input is used to hold the relative path from the workflow to the input directory location.
+1. A location where the directory is on the local disk. (Port: *http://physiomeproject.org/workflow/1.0/rdf-schema#directory_location*) 
 
-.. _fig-mcp-directory-chooser-configure-dialog:
+.. _fig-mcp-directory-chooser-workflow-connections:
 
-.. figure:: _images/step-configuration-dialog.png
-   :alt: Step configure dialog
+.. figure:: _images/workflow-connections.png
+   :alt: Directory Chooser workflow connections.
+   :align: center
+   :figwidth: 75%
 
-   *Directory Chooser* step configuration dialog.
+   **Directory Chooser** workflow connections.
 
-Ports
------
 
-This plugin:
+Information on this plugins' specification is available :ref:`here <mcp-directory-chooser-specification>`.
 
-* **provides**:
 
-  * *http://physiomeproject.org/workflow/1.0/rdf-schema#directory_location*
+Configuration
+-------------
+
+Information on this plugins' configuration is available :ref:`here <mcp-directory-chooser-configuration>`.
+
+
+Instructions
+------------
+
+This is a non-interactive step.
+See `Configuration`_.
