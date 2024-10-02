@@ -1,8 +1,9 @@
+import os.path
 import webbrowser
 
 from PySide6 import QtCore, QtWidgets
+
 from mapclientplugins.directorychooserstep.ui_configuredialog import Ui_ConfigureDialog
-import os.path
 
 INVALID_STYLE_SHEET = 'background-color: rgba(239, 0, 0, 50)'
 DEFAULT_STYLE_SHEET = ''
