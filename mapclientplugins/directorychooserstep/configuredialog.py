@@ -1,5 +1,6 @@
 import os.path
 import webbrowser
+from pathlib import PurePath, PureWindowsPath
 
 from PySide6 import QtCore, QtWidgets
 
@@ -33,7 +34,9 @@ class ConfigureDialog(QtWidgets.QDialog):
         self.identifierOccursCount = None
         self._previousLocation = ''
 
-        self.setWhatsThis('<html>Please read the documentation available \n<a href="https://abi-mapping-tools.readthedocs.io/en/latest/mapclientplugins.directorychooserstep/docs/index.html">here</a> for further details.</html>')
+        self.setWhatsThis(
+            '<html>Please read the documentation available \n'
+            '<a href="https://abi-mapping-tools.readthedocs.io/en/latest/mapclientplugins.directorychooserstep/docs/index.html">here</a> for further details.</html>')
 
         self._make_connections()
 
@@ -73,13 +76,13 @@ class ConfigureDialog(QtWidgets.QDialog):
         Override the accept method so that we can confirm saving an
         invalid configuration.
         """
-        result = QtWidgets.QMessageBox.Yes
+        result = QtWidgets.QMessageBox.StandardButton.Yes
         if not self.validate():
-            result = QtWidgets.QMessageBox.warning(self, 'Invalid Configuration', CONFIGURATION_INVALID_TEXT,
-                                                   QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No,
-                                                   QtWidgets.QMessageBox.No)
+            result = QtWidgets.QMessageBox.warning(
+                self, 'Invalid Configuration', CONFIGURATION_INVALID_TEXT,
+                QtWidgets.QMessageBox.StandardButton.Yes | QtWidgets.QMessageBox.StandardButton.No, QtWidgets.QMessageBox.StandardButton.No)
 
-        if result == QtWidgets.QMessageBox.Yes:
+        if result == QtWidgets.QMessageBox.StandardButton.Yes:
             QtWidgets.QDialog.accept(self)
 
     def validate(self):
@@ -113,7 +116,7 @@ class ConfigureDialog(QtWidgets.QDialog):
         identifier over the whole of the workflow.
         """
         self._previousIdentifier = self._ui.lineEdit0.text()
-        return {'identifier': self._ui.lineEdit0.text(), 'Directory': self._output_location()}
+        return {'identifier': self._ui.lineEdit0.text(), 'Directory': PureWindowsPath(self._output_location()).as_posix()}
 
     def setConfig(self, config):
         """
@@ -123,5 +126,4 @@ class ConfigureDialog(QtWidgets.QDialog):
         """
         self._previousIdentifier = config['identifier']
         self._ui.lineEdit0.setText(config['identifier'])
-        self._ui.lineEditDirectoryLocation.setText(config['Directory'])
-
+        self._ui.lineEditDirectoryLocation.setText(str(PurePath(config['Directory'])))
