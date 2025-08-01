@@ -6,6 +6,8 @@ from PySide6 import QtCore, QtWidgets
 
 from mapclientplugins.directorychooserstep.ui_configuredialog import Ui_ConfigureDialog
 
+from mapclient.core.utils import to_system_path, to_exchangeable_path
+
 INVALID_STYLE_SHEET = 'background-color: rgba(239, 0, 0, 50)'
 DEFAULT_STYLE_SHEET = ''
 
@@ -116,7 +118,7 @@ class ConfigureDialog(QtWidgets.QDialog):
         identifier over the whole of the workflow.
         """
         self._previousIdentifier = self._ui.lineEdit0.text()
-        return {'identifier': self._ui.lineEdit0.text(), 'Directory': PureWindowsPath(self._output_location()).as_posix()}
+        return {'identifier': self._ui.lineEdit0.text(), 'Directory': to_exchangeable_path(self._output_location())}
 
     def setConfig(self, config):
         """
@@ -126,4 +128,4 @@ class ConfigureDialog(QtWidgets.QDialog):
         """
         self._previousIdentifier = config['identifier']
         self._ui.lineEdit0.setText(config['identifier'])
-        self._ui.lineEditDirectoryLocation.setText(str(PurePath(config['Directory'])))
+        self._ui.lineEditDirectoryLocation.setText(to_system_path(config['Directory']))
